@@ -1,2 +1,49 @@
 
 /* Your CSS Code here. */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #f8f8f8;
+  font-family: Arial, sans-serif;
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  background: #333;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.flex {
+  width: 100%;
+  border-radius: 5px;
+}
+
+.speed {
+  width: 100%;
+  height: 50px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+}
+
+.speed-bar {
+  width: 50%;
+  height: 100%;
+  background: #
