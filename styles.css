@@ -1,9 +1,8 @@
-
-/* Your CSS Code here. */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
 }
 
 body {
@@ -12,38 +11,46 @@ body {
   align-items: center;
   height: 100vh;
   background: #f8f8f8;
-  font-family: Arial, sans-serif;
 }
 
-.wrapper {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.player {
   max-width: 800px;
   background: #333;
   padding: 10px;
   border-radius: 8px;
+  overflow: hidden;
 }
 
-.flex {
+.viewer {
   width: 100%;
   border-radius: 5px;
 }
 
-.speed {
-  width: 100%;
-  height: 50px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-  position: relative;
+.controls {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.5);
 }
 
-.speed-bar {
-  width: 50%;
-  height: 100%;
-  background: #
+.player__button {
+  background: #ff5722;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+}
+
+.player__slider {
+  width: 100px;
+}
+
+.progress {
+  flex: 1;
+  height: 5px;
+  background: #ff5722;
+  cursor: pointer;
+}
