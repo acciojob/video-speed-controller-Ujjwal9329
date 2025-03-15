@@ -7,27 +7,31 @@ const fastForwardButton = document.querySelector('.fastForward');
 const progressBar = document.querySelector('.progress');
 const progressFilled = document.querySelector('.progress__filled');
 
-// Play/Pause Toggle
+// Toggle Play/Pause
 function togglePlay() {
-  if (video.paused) {
+  if (video.paused || video.ended) {
     video.play();
-    playButton.textContent = '❚ ❚';
   } else {
     video.pause();
-    playButton.textContent = '►';
   }
+}
+
+// Update Play Button State
+function updatePlayButton() {
+  playButton.textContent = video.paused ? '►' : '❚ ❚';
 }
 
 // Update Progress Bar
 function updateProgress() {
   const percent = (video.currentTime / video.duration) * 100;
   progressBar.value = percent;
+  progressFilled.style.width = `${percent}%`;
 }
 
 // Seek Video
-function setProgress() {
-  const time = (progressBar.value / 100) * video.duration;
-  video.currentTime = time;
+function setProgress(e) {
+  const newTime = (e.target.value / 100) * video.duration;
+  video.currentTime = newTime;
 }
 
 // Volume Control
@@ -40,19 +44,23 @@ function handleSpeed() {
   video.playbackRate = speedControl.value;
 }
 
-// Rewind and Fast Forward
+// Rewind Video
 function rewind() {
-  video.currentTime -= 10;
+  video.currentTime = Math.max(0, video.currentTime - 10);
 }
 
+// Fast Forward Video
 function fastForward() {
-  video.currentTime += 25;
+  video.currentTime = Math.min(video.duration, video.currentTime + 25);
 }
 
 // Event Listeners
 video.addEventListener('click', togglePlay);
-playButton.addEventListener('click', togglePlay);
+video.addEventListener('play', updatePlayButton);
+video.addEventListener('pause', updatePlayButton);
 video.addEventListener('timeupdate', updateProgress);
+
+playButton.addEventListener('click', togglePlay);
 progressBar.addEventListener('input', setProgress);
 volumeControl.addEventListener('input', handleVolume);
 speedControl.addEventListener('input', handleSpeed);
